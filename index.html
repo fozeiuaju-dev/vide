@@ -1,10 +1,63 @@
 <html>
 <body>
-    <video id="video" src="ABKB5oaXFUUSK_B4.mp4"></video>
+    <div class="video-background">
+    <video autoplay  loop playsinline>
+        <source src="ABKB5oaXFUUSK_B4.mp4" type="video/mp4">
+        <!-- Add a fallback image or text for browsers that don't support the video tag -->
+    </video>
+</div>
+
+<!-- Add other page content here -->
+<div class="content">
+    <h1>Your Website Content</h1>
+    <p>This content will appear on top of the video.</p>
+</div>
+
 </body>
 <style>
-    #id{
-        size: stretch;
-    }
+   /* Basic reset to remove default margins */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide scrollbars if the video slightly overflows */
+}
+
+.video-background {
+    position: fixed; /* Positions the video relative to the browser window */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensures the video stays behind all other content */
+}
+
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    /* This is the key property: it makes the video cover the entire area 
+       while maintaining its aspect ratio, similar to background-size: cover */
+    object-fit: cover; 
+    
+    /* Position the video at the center of the container */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for your actual content */
+.content {
+    position: relative;
+    z-index: 1; /* Ensures content is above the video */
+    color: white; /* Make text readable on top of a potentially dark video */
+    text-align: center;
+    padding-top: 20vh; /* Example padding for visibility */
+}
+
 </style>
 </html>
